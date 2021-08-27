@@ -28,9 +28,7 @@ void main() {
                 backgroundColor: Colors.green,
               ),
             ),
-            TextSpan(
-              text: '!'
-            ),
+            TextSpan(text: '!'),
             TextSpan(
               text: '\nHoje é $diaDaSemana!',
               style: TextStyle(

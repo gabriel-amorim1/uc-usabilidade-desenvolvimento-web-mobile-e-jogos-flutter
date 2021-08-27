@@ -1,0 +1,10 @@
+.dart_tool
+android
+build
+ios
+linux
+web
+.packages
+pubspec.lock
+pubspec.yaml
+uc_usabilidade_desenvolvimento_web_mobile_e_jogos_flutter.iml
