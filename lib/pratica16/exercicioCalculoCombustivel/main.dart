@@ -19,11 +19,18 @@ class Preco {
   razao() => etanol / gasolina;
 }
 
-class PrimeiraRota extends StatelessWidget {
-  Mensagem? mensagem;
-  PrimeiraRota([this.mensagem]);
+class PrimeiraRota extends StatefulWidget {
+  PrimeiraRotaState createState() {
+    return PrimeiraRotaState('');
+  }
+}
+
+class PrimeiraRotaState extends State<PrimeiraRota> {
+  String melhorCombustivel;
+  PrimeiraRotaState(this.melhorCombustivel);
   final TextEditingController precoEtanol = TextEditingController();
   final TextEditingController precoGasolina = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,10 +74,24 @@ class PrimeiraRota extends StatelessWidget {
                 double.parse(precoGasolina.text),
               );
 
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SegundaRota(preco)));
+              Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SegundaRota(preco)))
+                  .then((resposta) {
+                setState(() {
+                  melhorCombustivel = resposta;
+                });
+              });
             },
             child: Text('Ir para a Segunda Rota'),
+          ),
+          Text(
+            melhorCombustivel,
+            style: TextStyle(
+              fontSize: 40,
+              color: Colors.blue,
+            ),
           ),
         ],
       ),
@@ -124,10 +145,7 @@ class SegundaRota extends StatelessWidget {
             ElevatedButton(
               child: Text('Ir para a Primeira Rota'),
               onPressed: () {
-                Navigator.pop(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PrimeiraRota(mensagem)));
+                Navigator.pop(context, mensagem.texto);
               },
             ),
           ],
