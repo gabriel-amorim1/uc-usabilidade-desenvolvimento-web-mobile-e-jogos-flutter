@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'descricao.dart';
 
 class Foto extends StatelessWidget {
-  final String url;
-  final Descricao descricao;
+  final String url, tituloPagina, tituloDescricao, descricao;
 
-  Foto(this.url, this.descricao);
+  Foto(this.url, this.tituloPagina, this.tituloDescricao, this.descricao);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,9 @@ class Foto extends StatelessWidget {
       ),
       onTap: () => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => descricao),
+        MaterialPageRoute(
+            builder: (context) =>
+                Descricao(tituloPagina, tituloDescricao, descricao)),
       ),
     );
   }
