@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'rota/rota.dart';
+import 'rota/home.dart';
 
 void main() => runApp(
       MaterialApp(
